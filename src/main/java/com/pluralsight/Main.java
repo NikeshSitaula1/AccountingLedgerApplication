@@ -5,6 +5,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Main {
@@ -15,7 +18,6 @@ public class Main {
 
     public static void main(String[] args) {
         homeScreen();
-        addDeposit();
     }
 
 
@@ -55,15 +57,15 @@ public class Main {
 
     static void addDeposit(){
 
-         String depositDescription = Console.PromptForString("Enter the name of the Item: ");
-         String depositVendor = Console.PromptForString("Enter the name of the vendor: ");
-         double depositAmount = Console.PromptForDouble("Enter the amount you have spent: ");
+         String depositDescription = Console.PromptForString("Description of the deposit: ");
+         String depositVendor = Console.PromptForString("Enter the name of the Vendor: ");
+         double depositAmount = Console.PromptForDouble("Enter the amount you want to deposit:  ");
 
          //LocalDate depositDate = Console.PromptForDate("Enter the date of purchase");
          //LocalTime depositTime = Console.PromptForTime("Enter the time of purchase");
-
          LocalDate depositDate = LocalDate.now();
          LocalTime depositTime = LocalTime.now();
+
 
          Ledger ledge = new Ledger(transactions.size() +1, depositDate, depositTime,
                  depositDescription, depositVendor, depositAmount);
@@ -72,6 +74,23 @@ public class Main {
     }
 
     static void makePayment(){
+
+        String depositDescription = Console.PromptForString("Enter the name of the Item: ");
+        String depositVendor = Console.PromptForString("Enter the name of the vendor: ");
+        double depositAmount = Console.PromptForDouble("Enter the amount you have spent: ");
+
+        depositAmount = depositAmount * -1;
+
+        //LocalDate depositDate = Console.PromptForDate("Enter the date of purchase");
+        //LocalTime depositTime = Console.PromptForTime("Enter the time of purchase");
+        LocalDate depositDate = LocalDate.now();
+        LocalTime depositTime = LocalTime.now();
+
+
+        Ledger ledge = new Ledger(transactions.size() +1, depositDate, depositTime,
+                depositDescription, depositVendor, depositAmount);
+        transactions.add(ledge);
+        saveTransaction();
 
     }
 
@@ -193,19 +212,22 @@ public class Main {
             FileWriter fw = new FileWriter(dataFileName);
             BufferedWriter bw = new BufferedWriter(fw);
 
+            DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+            bw.write("date|time|description|vendor|amount \n");
 
             for(Ledger ledger : transactions) {
+                String timeFormatted = ledger.getTime().format(timeFormat);
                 String data = ledger.getDate() + "|"
-                        + ledger.getTime() + "|" + ledger.getDescription() + "|" + ledger.getVendor()
+                        + timeFormatted + "|" + ledger.getDescription() + "|" + ledger.getVendor()
                         + "|" + ledger.getAmount() + "\n";
                 bw.write(data);
             }
             bw.close();
 
-        } catch (Exception e){
+        } catch (IOException e){
             System.out.println("Error");
         }
-
     }
 
 
@@ -221,6 +243,8 @@ public class Main {
 
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
+            br.readLine();
+
             while ((input = br.readLine()) != null) {
                 String [] tokens = input.split(Pattern.quote("|"));
 
@@ -231,7 +255,6 @@ public class Main {
                 double amount = Double.parseDouble(tokens[4]);
                 Ledger ledger = new Ledger (transaction.size() +1, date, time, description, vendor, amount);
                 transaction.add(ledger);
-
             }
             br.close();
 
