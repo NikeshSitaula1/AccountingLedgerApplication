@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-public class Console {
+public class Consoletest {
 
     static Scanner scanner = new Scanner(System.in);
 

@@ -3,11 +3,9 @@ package com.pluralsight;
 import java.time.LocalDate;
 // import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 
 public class Ledger {
 
-    private int id;
     private LocalDate date;
     private LocalTime time;
     private String description;
@@ -16,7 +14,6 @@ public class Ledger {
 
 
     public Ledger(int id, LocalDate date, LocalTime time, String description, String vendor, double amount) {
-        this.id = id;
         this.date = date;
         this.time = time;
         this.description = description;
@@ -25,13 +22,6 @@ public class Ledger {
     }
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public LocalDate getDate() {
         return date;
@@ -76,10 +66,11 @@ public class Ledger {
     public String toString() {
         return "Ledger{" +
                 "date=" + date +
-                ", time=" + time.format(DateTimeFormatter.ofPattern("HH:mm:ss")) +
+                ", time=" + time +
                 ", description='" + description + '\'' +
                 ", vendor='" + vendor + '\'' +
                 ", amount=" + amount +
                 '}';
     }
 }
+

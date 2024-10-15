@@ -3,19 +3,17 @@ package com.pluralsight;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class Main {
+public class MainTest {
 
-    public final static String dataFileName = "transactions.csv";
-    public static ArrayList<Ledger> transactions = getTransaction();
+    static ArrayList<Ledger> transactions = new ArrayList<>();
 
 
     public static void main(String[] args) {
         homeScreen();
-        addDeposit();
+
     }
 
 
@@ -55,20 +53,19 @@ public class Main {
 
     static void addDeposit(){
 
-         String depositDescription = Console.PromptForString("Enter the name of the Item: ");
-         String depositVendor = Console.PromptForString("Enter the name of the vendor: ");
-         double depositAmount = Console.PromptForDouble("Enter the amount you have spent: ");
+        String depositDescription = Console.PromptForString("Enter the name of the Item: ");
+        String depositVendor = Console.PromptForString("Enter the name of the vendor: ");
+        double depositAmount = Console.PromptForDouble("Enter the amount you have spent: ");
 
-         //LocalDate depositDate = Console.PromptForDate("Enter the date of purchase");
-         //LocalTime depositTime = Console.PromptForTime("Enter the time of purchase");
+        //LocalDate depositDate = Console.PromptForDate("Enter the date of purchase");
+        //LocalTime depositTime = Console.PromptForTime("Enter the time of purchase");
 
-         LocalDate depositDate = LocalDate.now();
-         LocalTime depositTime = LocalTime.now();
+        LocalDate depositDate = LocalDate.now();
+        LocalTime depositTime = LocalTime.now();
 
-         Ledger ledge = new Ledger(transactions.size() +1, depositDate, depositTime,
-                 depositDescription, depositVendor, depositAmount);
-         transactions.add(ledge);
-         saveTransaction();
+        Ledger ledger = new Ledger(transactions.size() +1, depositDate, depositTime, depositDescription, depositVendor, depositAmount);
+        transactions.add(ledger);
+        saveTransaction(transactions);
     }
 
     static void makePayment(){
@@ -187,14 +184,14 @@ public class Main {
 
 
     //todo FILE WRITER
-    public static void saveTransaction() {
+    public static void saveTransaction(ArrayList<Ledger> transaction) {
 
         try {
-            FileWriter fw = new FileWriter(dataFileName);
+            FileWriter fw = new FileWriter("transactions.csv");
             BufferedWriter bw = new BufferedWriter(fw);
 
 
-            for(Ledger ledger : transactions) {
+            for(Ledger ledger : transaction) {
                 String data = ledger.getDate() + "|"
                         + ledger.getTime() + "|" + ledger.getDescription() + "|" + ledger.getVendor()
                         + "|" + ledger.getAmount() + "\n";
@@ -205,43 +202,38 @@ public class Main {
         } catch (Exception e){
             System.out.println("Error");
         }
-
     }
+
+
 
 
     //todo FOR FILE READER PROBABLY NOT NEEDED
-    public static ArrayList<Ledger> getTransaction(){
-        ArrayList<Ledger> transaction = new ArrayList<Ledger>();
-
-        try{
-            FileReader fr = new FileReader(dataFileName);
-            BufferedReader br = new BufferedReader(fr);
-
-            String input;
-
-            DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
-
-            while ((input = br.readLine()) != null) {
-                String [] tokens = input.split(Pattern.quote("|"));
-
-                LocalDate date = LocalDate.parse(tokens[0]);
-                LocalTime time = LocalTime.parse(tokens[1], timeFormat);
-                String description = tokens[2];
-                String vendor = tokens[3];
-                double amount = Double.parseDouble(tokens[4]);
-                Ledger ledger = new Ledger (transaction.size() +1, date, time, description, vendor, amount);
-                transaction.add(ledger);
-
-            }
-            br.close();
-
-        } catch (Exception e) {
-            System.out.println("Error!!");
-        }
-        return transaction;
-    }
+//    public static ArrayList<Ledger> getTransaction(){
+//        ArrayList<Ledger> transaction = new ArrayList<>();
+//
+//        try{
+//            FileReader fr = new FileReader("transaction.csv");
+//            BufferedReader br = new BufferedReader(fr);
+//
+//            String input;
+//
+//            while ((input = br.readLine()) != null) {
+//                String [] tokens = input.split(Pattern.quote("|"));
+//
+//                String date = tokens[0];
+//                String time = tokens[1];
+//                String description = tokens[2];
+//                String vendor = tokens[3];
+//                double amount = Double.parseDouble(tokens[4]);
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return transaction;
+//    }
 
 }
+
 
 
 
