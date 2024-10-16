@@ -166,6 +166,7 @@ public class Main {
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
 
 
+
             }
         }
         System.out.println("-".repeat(80));
@@ -271,7 +272,6 @@ public class Main {
                 System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
             }
-
         }
         System.out.println("-".repeat(80));
         Console.PromptForString("Press Enter to exit");
@@ -280,7 +280,7 @@ public class Main {
 
     static void yearToDate(){
 
-        System.out.println("These are Entries from previous month: ");
+        System.out.println("These are Entries from current year: ");
         System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
         System.out.println("-".repeat(80));
 
@@ -303,7 +303,7 @@ public class Main {
 
     static void previousYear(){
 
-        System.out.println("These are Entries from previous month: ");
+        System.out.println("These are Entries from previous year: ");
         System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
         System.out.println("-".repeat(80));
 
@@ -327,10 +327,23 @@ public class Main {
 
     static void searchByVendor(){
 
+        String vendor = Console.PromptForString("Enter the vendor you want to search. \n>> ");
+
+        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
+        System.out.println("-".repeat(80));
 
 
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        for(Ledger ledger : transactions){
+            String timeFormatted = ledger.getTime().format(timeFormat);
+            if(ledger.getVendor().equalsIgnoreCase(vendor)){
+                System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
+                        ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
+
+            }
+        }
     }
-
 
 
     //todo FILE WRITER
