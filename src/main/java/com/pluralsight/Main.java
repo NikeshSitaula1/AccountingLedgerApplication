@@ -134,8 +134,8 @@ public class Main {
 
     static void allEntries(){
         System.out.println("These are all the Entries in the Ledger: ");
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -143,53 +143,53 @@ public class Main {
         //for (int i = transactions.size() -1; i >= 0; i--) {
             //Ledger ledger = transactions.get(i);
             String timeFormatted = ledger.getTime().format(timeFormat);
-            System.out.printf("%s | %s | %25s | %10s | %10.2f\n",
+            System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                     ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
 
         }
-        System.out.println("-".repeat(80));
+        System.out.println("-".repeat(90));
         Console.PromptForString("Press Enter to exit");
     }
 
 
     static void displayDeposits(){
         System.out.println("These are Deposits only: ");
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         for (Ledger ledger : transactions){
             if (ledger.getAmount() > 0){
                 String timeFormatted = ledger.getTime().format(timeFormat);
-                System.out.printf("%s | %s | %25s | %10s | %10.2f\n",
+                System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
 
 
 
             }
         }
-        System.out.println("-".repeat(80));
+        System.out.println("-".repeat(90));
         Console.PromptForString("Press Enter to exit");
     }
 
 
     static void displayPayments(){
         System.out.println("These are Payments only: ");
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         for (Ledger ledger : transactions){
             if (ledger.getAmount() < 0){
                 String timeFormatted = ledger.getTime().format(timeFormat);
-                System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
+                System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
 
             }
         }
-        System.out.println("-".repeat(80));
+        System.out.println("-".repeat(90));
         Console.PromptForString("Press Enter to exit");
 
     }
@@ -198,7 +198,7 @@ public class Main {
 
         do{
             try{
-                System.out.println("-".repeat(80));
+                System.out.println("-".repeat(90));
                 System.out.println("Please choose one of the following Reports options");
                 System.out.println("1. Month To Date");
                 System.out.println("2. Previous Month");
@@ -236,8 +236,8 @@ public class Main {
     static void monthToDate(){
 
         System.out.println("These are Entries from current month: ");
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -247,11 +247,11 @@ public class Main {
             if (monthAndYearDate.getMonthValue() == LocalDate.now().getMonthValue()
                     &&
                     monthAndYearDate.getYear() == LocalDate.now().getYear()) {
-                System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
+                System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
             }
         }
-        System.out.println("-".repeat(80));
+        System.out.println("-".repeat(90));
         Console.PromptForString("Press Enter to exit");
 
     }
@@ -259,8 +259,8 @@ public class Main {
     static void previousMonth(){
 
         System.out.println("These are Entries from previous month: ");
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -269,20 +269,20 @@ public class Main {
             LocalDate monthDate = ledger.getDate();
 
             if (YearMonth.from(monthDate).equals(YearMonth.now().minusMonths(1))){
-                System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
+                System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
             }
         }
-        System.out.println("-".repeat(80));
+        System.out.println("-".repeat(90));
         Console.PromptForString("Press Enter to exit");
-
     }
+
 
     static void yearToDate(){
 
         System.out.println("These are Entries from current year: ");
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -291,21 +291,22 @@ public class Main {
             LocalDate yearDate = ledger.getDate();
 
             if (yearDate.getYear() == LocalDate.now().getYear()){
-                System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
+                System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
             }
         }
 
-        System.out.println("-".repeat(80));
+        System.out.println("-".repeat(90));
         Console.PromptForString("Press Enter to exit");
 
     }
 
+
     static void previousYear(){
 
         System.out.println("These are Entries from previous year: ");
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
@@ -314,13 +315,14 @@ public class Main {
             LocalDate yearDate = ledger.getDate();
 
             if (yearDate.getYear() == LocalDate.now().getYear()-1){
-                System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
+                //(YearMonth.from(yearDate).equals(YearMonth.now().minusYears(1))){
+                System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
             }
 
         }
 
-        System.out.println("-".repeat(80));
+        System.out.println("-".repeat(90));
         Console.PromptForString("Press Enter to exit");
 
     }
@@ -329,8 +331,8 @@ public class Main {
 
         String vendor = Console.PromptForString("Enter the vendor you want to search. \n>> ");
 
-        System.out.println("   Date   |   Time    |       Description         |   Vendor   |   Amount ");
-        System.out.println("-".repeat(80));
+        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
 
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -338,11 +340,12 @@ public class Main {
         for(Ledger ledger : transactions){
             String timeFormatted = ledger.getTime().format(timeFormat);
             if(ledger.getVendor().equalsIgnoreCase(vendor)){
-                System.out.printf("%s | %s | %10s | %5s | %5.2f\n",
+                System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
-
             }
         }
+        System.out.println("-".repeat(90));
+        Console.PromptForString("Press Enter to exit");
     }
 
 
