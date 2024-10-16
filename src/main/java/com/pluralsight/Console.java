@@ -90,6 +90,5 @@ public class Console {
         LocalTime timeInput = LocalTime.parse(value);
         return timeInput;
     }
-
 }
 

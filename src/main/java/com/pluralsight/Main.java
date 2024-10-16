@@ -390,6 +390,7 @@ public class Main {
             br.readLine();
 
             while ((input = br.readLine()) != null) {
+
                 String [] tokens = input.split(Pattern.quote("|"));
 
                 LocalDate date = LocalDate.parse(tokens[0]);
