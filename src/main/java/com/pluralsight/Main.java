@@ -56,17 +56,29 @@ public class Main {
 
     static void addDeposit(){
 
+        boolean useCustomDateTime = Console.PromptForYesNo("Do you want to enter a Custom date and time?: ");
+
+        LocalDate depositDate;
+        LocalTime depositTime;
+
+        if(useCustomDateTime){
+            depositDate = Console.PromptForDate("Enter the date (YYYY-MM-DD): ");
+            depositTime = Console.PromptForTime("Enter the Time (HH:MM:SS): ");
+        } else {
+
+            depositDate = LocalDate.now();
+            depositTime = LocalTime.now();
+        }
+
          String depositDescription = Console.PromptForString("Description of the deposit: ");
          String depositVendor = Console.PromptForString("Enter the name of the Vendor: ");
          double depositAmount = Console.PromptForDouble("Enter the amount you want to deposit:  ");
 
-         LocalDate depositDate = LocalDate.now();
-         LocalTime depositTime = LocalTime.now();
 
 
-         Ledger ledge = new Ledger(transactions.size() +1, depositDate, depositTime,
+         Ledger ledger = new Ledger(transactions.size() +1, depositDate, depositTime,
                  depositDescription, depositVendor, depositAmount);
-         transactions.add(ledge);
+         transactions.add(ledger);
          saveTransaction();
          Console.PromptForString("Deposit Added Successfully. \nPress Enter to exit");
 
@@ -75,14 +87,26 @@ public class Main {
 
     static void makePayment(){
 
+
+        boolean useCustomDateTime = Console.PromptForYesNo("Do you want to enter a Custom date and time?: ");
+
+        LocalDate paymentDate;
+        LocalTime paymentTime;
+
+        if(useCustomDateTime){
+            paymentDate = Console.PromptForDate("Enter the date (YYYY-MM-DD): ");
+            paymentTime = Console.PromptForTime("Enter the Time (HH:MM:SS)");
+        } else {
+            paymentDate = LocalDate.now();
+            paymentTime = LocalTime.now();
+        }
+
         String paymentDescription = Console.PromptForString("Enter the name of the Item: ");
         String paymentVendor = Console.PromptForString("Enter the name of the vendor: ");
         double paymentAmount = Console.PromptForDouble("Enter the amount you have spent: ");
 
         paymentAmount = paymentAmount * -1;
 
-        LocalDate paymentDate = LocalDate.now();
-        LocalTime paymentTime = LocalTime.now();
 
 
         Ledger ledge = new Ledger(transactions.size() +1, paymentDate, paymentTime,
