@@ -6,17 +6,21 @@ import java.util.Scanner;
 
 public class Console {
 
+    // Static scanner for input
     static Scanner scanner = new Scanner(System.in);
 
+    // Method to prompt a String input
     public static String PromptForString(String prompt){
         System.out.print(prompt);
         return scanner.nextLine();
     }
 
+    // Method to prompt a String input without asking prompt
     public static String PromptForString(){
         return scanner.nextLine();
     }
 
+    //Method to prompt a Boolean input
     public static boolean PromptForYesNo(String prompt){
         System.out.print(prompt + "( Y for Yes, N for No ): ");
         String boolInput = scanner.nextLine();
@@ -30,6 +34,7 @@ public class Console {
 
     }
 
+    //Method to prompt a Short input
     public static short PromptForShort(String prompt){
         System.out.print(prompt);
         String value = scanner.nextLine();
@@ -37,6 +42,7 @@ public class Console {
         return shortInput;
     }
 
+    //Method to prompt an Integer input
     public static int PromptForInt(String prompt){
         System.out.print(prompt);
         String value = scanner.nextLine();
@@ -44,12 +50,14 @@ public class Console {
         return intInput;
     }
 
+    //Method to prompt an Integer input without asking prompt
     public static int PromptForInt(){
         String value = scanner.nextLine();
         int intInput = Integer.parseInt(value);
         return intInput;
     }
 
+    //Method to prompt a Double input
     public static double PromptForDouble(String prompt){
         System.out.print(prompt);
         String userInputs = scanner.nextLine();
@@ -57,6 +65,7 @@ public class Console {
         return doubleInput;
     }
 
+    //Method to prompt a Byte input
     public static byte PromptForByte(String prompt){
         System.out.print(prompt);
         String value = scanner.nextLine();
@@ -64,12 +73,14 @@ public class Console {
         return byteInput;
     }
 
+    //Method to prompt a Byte input without asking prompt
     public static byte PromptForByte(){
         String value = scanner.nextLine();
         byte byteInput = Byte.parseByte(value);
         return byteInput;
     }
 
+    //Method to prompt a Float input
     public static float PromptForFloat(String prompt){
         System.out.print(prompt);
         String value = scanner.nextLine();
@@ -77,6 +88,7 @@ public class Console {
         return floatInput;
     }
 
+    //Method to prompt to input LocalDate
     public static LocalDate PromptForDate(String prompt) {
         System.out.print(prompt);
         String value = scanner.nextLine();
@@ -84,6 +96,7 @@ public class Console {
         return dateInput;
     }
 
+    //Method to prompt to input LocalTime
     public static LocalTime PromptForTime(String prompt) {
         System.out.print(prompt);
         String value = scanner.nextLine();

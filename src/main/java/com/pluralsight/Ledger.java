@@ -1,12 +1,13 @@
 package com.pluralsight;
 
 import java.time.LocalDate;
-// import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+// Ledger class representing a financial transaction
 public class Ledger {
 
+    // Private fields for the transaction details
     private int id;
     private LocalDate date;
     private LocalTime time;
@@ -14,17 +15,20 @@ public class Ledger {
     private String vendor;
     private double amount;
 
-
+    // Constructor to initialize a new Ledger object with all fields
     public Ledger(int id, LocalDate date, LocalTime time, String description, String vendor, double amount) {
-        this.id = id;
-        this.date = date;
-        this.time = time;
-        this.description = description;
-        this.vendor = vendor;
-        this.amount = amount;
+        this.id = id; //Set Transaction ID
+        this.date = date; //Set Transaction date
+        this.time = time; //Set Transaction time
+        this.description = description; //Set Transaction description
+        this.vendor = vendor; //Set Transaction vendor. Vendor for this app, would be the company that you have made transaction with
+        this.amount = amount; //Set transaction amount. Amount would be the sum that you have deposited or paid
     }
 
 
+    /*
+    Getter and Setter methods
+     */
     public int getId() {
         return id;
     }
@@ -73,6 +77,7 @@ public class Ledger {
         this.amount = amount;
     }
 
+    // Override of the toString method to return a formatted string with transaction details
     public String toString() {
         return "Ledger{" +
                 "date=" + date +

@@ -4,33 +4,42 @@ YearUp Capstone 1, a simple Accounting Ledger Application that can track all fin
 transactions for a business or for personal use. All transactions in the application will be read from and saved to a transaction
 file named transaction.csv.
 
-## Table of Contents 
-- [Capstone Requirements](#Capstone-Requirements)
-- [Features](#Features)
+# Table of Contents 
+- [Application Features](#Application-Features)
 - [File Structure](#File-Structure)
-- [How to Run](#How-to-Run)
-- [Usage](#Usage)
+- [Getting Started](#Getting-Started)
+- [Interesting code](#Interesting-Code)
 - [License](#License)
 
 ---
 
-## Capstone Requirements
+# Application Features
 
-![Screenshot of requirements](https://i.imgur.com/kSY35gi.png)
+### Home Screen
+- **D) Add Deposit**: Prompt and save deposit info to CSV.
+- **P) Make Payment (Debit)**: Prompt and save debit info to CSV.
+- **L) Ledger**: Display the ledger screen.
+- **X) Exit**: Exit the application.
 
-## Features
+### Ledger Menu
+- **A) All**: Display all entries.
+- **D) Deposits**: Show only deposits.
+- **P) Payments**: Show only payments.
+- **R) Reports**: Access predefined reports or custom search.
+- **H) Home**: Return to the home page.
 
-- Add deposits or payments to the ledger.
-- View all ledger entries, deposits only, or payments only, sorted out by the newest entries.
-- Generate reports such as:
-    - Month to date
-    - Previous month
-    - Year to date
-    - Previous year
-    - Search by vendor
-- Transactions are saved to and read from a CSV file, [transactions.csv](https://github.com/NikeshSitaula1/AccountingLedgerApplication/blob/main/transactions.csv).
+### Reports Menu
+- **1) Month To Date**
+- **2) Previous Month**
+- **3) Year To Date**
+- **4) Previous Year**
+- **5) Search by Vendor**
+- **0) Back**
 
-## File Structure
+Transactions are saved to and read from a CSV file, [transactions.csv](https://github.com/NikeshSitaula1/AccountingLedgerApplication/blob/main/transactions.csv)
+
+
+# File Structure
 
 - **Main.java**  
   The main entry point for the application. Contains all the methods that handles the menu and logic for adding transactions, viewing the ledger, and generating reports.
@@ -43,6 +52,19 @@ file named transaction.csv.
 
 - **transactions.csv**  
   The file where all transaction data is stored. Each transaction includes the date, time, description, vendor, and amount.
+
+# Getting Started
+
+## Pre-Requisites
+- Java Development Kit (JDK) 11 or higher
+- Build System - Maven
+
+
+
+
+
+
+
 
 
   

@@ -74,6 +74,7 @@ public class Main {
     static void addDeposit(){
 
         System.out.println("Add a Deposit Screen");
+        System.out.println("-".repeat(90));
 
         // Ask if the user wants to enter a custom date and time
         boolean useCustomDateTime = Console.PromptForYesNo("Do you want to enter a Custom date and time?: ");
@@ -111,6 +112,7 @@ public class Main {
     static void makePayment(){
 
         System.out.println("Make a Payment Screen");
+        System.out.println("-".repeat(90));
 
         // Ask if the user wants to enter a custom date and time
         boolean useCustomDateTime = Console.PromptForYesNo("Do you want to enter a Custom date and time?: ");
@@ -206,7 +208,8 @@ public class Main {
     static void allEntries(){
 
         System.out.println("These are all the Entries in the Ledger: ");
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -231,7 +234,8 @@ public class Main {
     //Method to display only Deposit entries
     static void displayDeposits(){
         System.out.println("These are Deposits only: ");
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
         // Provides pattern for time to not have it show nanoseconds
@@ -253,7 +257,8 @@ public class Main {
     // Method to display only Payment entries
     static void displayPayments(){
         System.out.println("These are Payments only: ");
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
         // Provides pattern for time to not have it show nanoseconds
@@ -328,7 +333,8 @@ public class Main {
     static void monthToDate(){
 
         System.out.println("These are Entries from current month: ");
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
         // Provides pattern for time to not have it show nanoseconds
@@ -354,7 +360,8 @@ public class Main {
     static void previousMonth(){
 
         System.out.println("These are Entries from previous month: ");
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
         // Provides pattern for time to not have it show nanoseconds
@@ -380,7 +387,8 @@ public class Main {
     static void yearToDate(){
 
         System.out.println("These are Entries from current year: ");
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
         // Provides pattern for time to not have it show nanoseconds
@@ -407,7 +415,8 @@ public class Main {
     static void previousYear(){
 
         System.out.println("These are Entries from previous year: ");
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
         // Provides pattern for time to not have it show nanoseconds
@@ -435,7 +444,9 @@ public class Main {
 
         String vendor = Console.PromptForString("Enter the vendor you want to search. \n>> ");
 
-        System.out.println("   Date   |   Time    |            Description         |        Vendor     |    Amount ");
+        System.out.println("Vendor search: ");
+        System.out.println("-".repeat(90));
+        System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
 
@@ -484,7 +495,7 @@ public class Main {
 
     // Method to read transactions from a file and populate the ArrayList
     public static ArrayList<Ledger> getTransaction(){
-        ArrayList<Ledger> transaction = new ArrayList<Ledger>();
+        ArrayList<Ledger> transaction = new ArrayList<>();
 
         try{
             FileReader fr = new FileReader(dataFileName);
