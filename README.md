@@ -16,6 +16,4 @@ file named [transactions.csv](https://github.com/NikeshSitaula1/AccountingLedger
 
 ## Capstone Requirements
 
-![Requirements.png](..%2F..%2F..%2F..%2FPictures%2FScreenshots%2FRequirements.png)
-
-## 
+![Screenshot of requirements](https://imgur.com/a/requirements-77X7oDl)
