@@ -222,9 +222,7 @@ public class Main {
 
         // Loops through all transactions and prints them but in the reverse order, making the new entries show first
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             String timeFormatted = ledger.getTime().format(timeFormat);
             System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                     ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
@@ -247,9 +245,7 @@ public class Main {
 
         // Loop through transactions and display deposits, so all the positive amounts
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             if (ledger.getAmount() > 0){
                 String timeFormatted = ledger.getTime().format(timeFormat);
                 System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
@@ -273,9 +269,7 @@ public class Main {
 
         // Loop through transactions and display payments, so all the negative amounts
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             if (ledger.getAmount() < 0){
                 String timeFormatted = ledger.getTime().format(timeFormat);
                 System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
@@ -354,9 +348,7 @@ public class Main {
 
         // Loop through transactions to find entries from the current month
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate monthAndYearDate = ledger.getDate(); //Creating a variable for created date
 
@@ -384,9 +376,7 @@ public class Main {
 
         // Loop through transactions to find entries from the previous month
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate monthDate = ledger.getDate(); //Creating a variable for created date
 
@@ -414,9 +404,7 @@ public class Main {
 
         // Loop through transactions to find entries from the current year
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate yearDate = ledger.getDate(); //Creating a variable for created date
 
@@ -445,9 +433,7 @@ public class Main {
 
         // Loop through transactions to find entries from the previous year
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate yearDate = ledger.getDate(); //Creating a variable for created date
 
@@ -478,9 +464,7 @@ public class Main {
 
         // Loop through transactions to find entries that match the specified vendor
         for (int i = transactions.size() -1; i >= 0; i--) {
-
             Ledger ledger = transactions.get(i);
-
             String timeFormatted = ledger.getTime().format(timeFormat);
             if(ledger.getVendor().equalsIgnoreCase(vendor)){
                 System.out.printf("%s | %s | %30s | %17s | %9.2f\n",

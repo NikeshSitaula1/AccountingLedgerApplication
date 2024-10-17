@@ -59,7 +59,7 @@ Transactions are saved to and read from a CSV file, [transactions.csv](https://g
 
 ## Getting Started
 
-### Pre-Requisites
+### Prerequisites
 - Java Development Kit (JDK) 11 or higher
 - Text Editor or IDE (IntelliJ IDEA)
 - Build System - Maven
@@ -79,7 +79,7 @@ Transactions are saved to and read from a CSV file, [transactions.csv](https://g
 
 ### Home Screen
 Screenshot of Home Screen. 
-Can use either numbers or the Letters on the [] to choose an option. 
+Can use either numbers or the Letters on the [ ] to choose an option. 
 ![HomeScreen](https://i.imgur.com/vvxyLvJ.png)
 
 ### Ledger Screen
@@ -98,6 +98,7 @@ on the ledger screen to open the report screen
 
 ![Arraylist.size()+1](https://i.imgur.com/bYS9L1Z.png)
 ![Constructed ID](https://i.imgur.com/8FPaKlz.png)
+
 
 I have created an instance variable, id for my Ledger class, thinking it would be necessary for this project. However, I later realized that the application did not require the id field. So, I did not want to create a function to call the id, but leaving it alone would mean my object not working as it is tied to it. As such, instead of removing the id,
 I decided to auto generate ids based on current size of the transactions list with ```transactions.size() + 1```.This allowed me to keep track of entries, allowing each new entry to get a unique. incremental id automatically. The problem of doing this way tho, is that, if an item is deleted from the transactions list, it will no longer remain sequential and there will be unused ids. 
