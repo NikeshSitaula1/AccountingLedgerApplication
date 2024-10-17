@@ -38,7 +38,8 @@ public class Console {
     public static short PromptForShort(String prompt){
         System.out.print(prompt);
         String value = scanner.nextLine();
-        return Short.parseShort(value);
+        short shortInput = Short.parseShort(value);
+        return shortInput;
     }
 
     //Method to prompt an Integer input
