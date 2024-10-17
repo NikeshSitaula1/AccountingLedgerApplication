@@ -165,8 +165,6 @@ public class Main {
                 System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
                         ledger.getDate(), timeFormatted, ledger.getDescription(), ledger.getVendor(), ledger.getAmount());
 
-
-
             }
         }
         System.out.println("-".repeat(90));
@@ -408,7 +406,6 @@ public class Main {
         }
         return transaction;
     }
-
 }
 
 
