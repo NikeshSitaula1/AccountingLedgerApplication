@@ -39,7 +39,7 @@ file named transaction.csv.
   This file contains the `Ledger` class, which is the core object of the application. It holds transaction details of `id`, `date`, `time`, `description`, `vendor`, and `amount`. The class includes getters and setters for these fields.
 
 - **Console.java**  
-  Provides utility methods for user input with a static Scanner to apply to the Main class, The util methods used in this application:  `PromptForString()`, `PromptForDouble()`, `PromptForInt()`.
+  Provides utility methods for user input with a static Scanner to apply to the Main class, The util methods used in this application:  `PromptForString()`, `PromptForDouble()`, `PromptForInt()`, `PromptForYesNo()`, `PromptForDate` and `PromptForTime`.
 
 - **transactions.csv**  
   The file where all transaction data is stored. Each transaction includes the date, time, description, vendor, and amount.
