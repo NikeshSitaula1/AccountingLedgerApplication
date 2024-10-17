@@ -37,7 +37,7 @@ file named transaction.csv.
 - **5) Search by Vendor**
 - **0) Back**
 
-Transactions are saved to and read from a CSV file, [transactions.csv](https://github.com/NikeshSitaula1/AccountingLedgerApplication/blob/main/transactions.csv)
+Transactions are saved to and read from [transactions.csv](https://github.com/NikeshSitaula1/AccountingLedgerApplication/blob/main/transactions.csv)
 
 ---
 
