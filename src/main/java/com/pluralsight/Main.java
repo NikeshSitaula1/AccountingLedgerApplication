@@ -39,7 +39,7 @@ public class Main {
             try{
                 // Display the menu option for the user
                 System.out.println("-".repeat(90));
-                System.out.println("Welcome to the Accounting Ledger App");
+                System.out.println("      WELCOME TO THE ACCOUNTING LEDGER APPLICATION      ");
                 System.out.println("-".repeat(90));
                 System.out.println("Please choose one of the following options: ");
                 System.out.println("1. Add [D]eposit");
@@ -100,7 +100,7 @@ public class Main {
         double depositAmount = Console.PromptForDouble("Enter the amount you want to deposit:  ");
 
         // Create a new Ledger entry for the deposit
-        Ledger ledger = new Ledger(transactions.size() +1, depositDate, depositTime,
+        Ledger ledger = new Ledger(transactions.size() + 1, depositDate, depositTime,
                  depositDescription, depositVendor, depositAmount);
         transactions.add(ledger); // Adds the deposit to the transaction list
         saveTransaction(); // Save the transaction to the file. saveTransaction is the fileWriter
@@ -165,8 +165,10 @@ public class Main {
         do{
             // Just in case there is an error
             try{
-                System.out.println("-".repeat(80));
-                System.out.println("Please choose one of the following Ledger options");
+                System.out.println("-".repeat(90));
+                System.out.println("      LEDGER SCREEN      ");
+                System.out.println("-".repeat(90));
+                System.out.println("Choose one of the following options");
                 System.out.println("1. [A]ll Entries");
                 System.out.println("2. [D]eposits");
                 System.out.println("3. [P]ayments");
@@ -212,14 +214,16 @@ public class Main {
         System.out.println("   Date    |   Time   |            Description         |        Vendor     |    Amount ");
         System.out.println("-".repeat(90));
 
+        // Provides pattern for time to not have it show nanoseconds
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loops through all transactions and prints them
-        for (Ledger ledger : transactions) {
+        //for (Ledger ledger : transactions) {
 
-        //For newest Entries:
-        //for (int i = transactions.size() -1; i >= 0; i--) {
-            //Ledger ledger = transactions.get(i);
+        // Loops through all transactions and prints them but in the reverse order, making the new entries show first
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
 
             String timeFormatted = ledger.getTime().format(timeFormat);
             System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
@@ -242,7 +246,10 @@ public class Main {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loop through transactions and display deposits, so all the positive amounts
-        for (Ledger ledger : transactions){
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
+
             if (ledger.getAmount() > 0){
                 String timeFormatted = ledger.getTime().format(timeFormat);
                 System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
@@ -265,7 +272,10 @@ public class Main {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loop through transactions and display payments, so all the negative amounts
-        for (Ledger ledger : transactions){
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
+
             if (ledger.getAmount() < 0){
                 String timeFormatted = ledger.getTime().format(timeFormat);
                 System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
@@ -294,7 +304,9 @@ public class Main {
             // Just in case there is an error
             try{
                 System.out.println("-".repeat(90));
-                System.out.println("Please choose one of the following Reports options");
+                System.out.println("      REPORTS SCREEN      ");
+                System.out.println("-".repeat(90));
+                System.out.println("Choose one of the following options");
                 System.out.println("1. Month To Date");
                 System.out.println("2. Previous Month");
                 System.out.println("3. Year To Date");
@@ -341,7 +353,10 @@ public class Main {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loop through transactions to find entries from the current month
-        for(Ledger ledger : transactions){
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
+
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate monthAndYearDate = ledger.getDate(); //Creating a variable for created date
 
@@ -368,7 +383,10 @@ public class Main {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loop through transactions to find entries from the previous month
-        for(Ledger ledger : transactions){
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
+
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate monthDate = ledger.getDate(); //Creating a variable for created date
 
@@ -395,7 +413,10 @@ public class Main {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loop through transactions to find entries from the current year
-        for(Ledger ledger : transactions){
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
+
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate yearDate = ledger.getDate(); //Creating a variable for created date
 
@@ -423,7 +444,10 @@ public class Main {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loop through transactions to find entries from the previous year
-        for(Ledger ledger : transactions){
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
+
             String timeFormatted = ledger.getTime().format(timeFormat); //Formatting the created time to the DateTimeFormatter pattern
             LocalDate yearDate = ledger.getDate(); //Creating a variable for created date
 
@@ -453,7 +477,10 @@ public class Main {
         DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
         // Loop through transactions to find entries that match the specified vendor
-        for(Ledger ledger : transactions){
+        for (int i = transactions.size() -1; i >= 0; i--) {
+
+            Ledger ledger = transactions.get(i);
+
             String timeFormatted = ledger.getTime().format(timeFormat);
             if(ledger.getVendor().equalsIgnoreCase(vendor)){
                 System.out.printf("%s | %s | %30s | %17s | %9.2f\n",
@@ -478,7 +505,8 @@ public class Main {
             bw.write("date|time|description|vendor|amount \n"); //Write header
 
             // Loop through transactions and write each one to the file
-            for(Ledger ledger : transactions) {
+            for (int i = transactions.size() -1; i >= 0; i--) {
+                Ledger ledger = transactions.get(i);
                 String timeFormatted = ledger.getTime().format(timeFormat);
                 String data = ledger.getDate() + "|"
                         + timeFormatted + "|" + ledger.getDescription() + "|" + ledger.getVendor()

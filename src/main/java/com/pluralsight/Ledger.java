@@ -78,6 +78,7 @@ public class Ledger {
     }
 
     // Override of the toString method to return a formatted string with transaction details
+
     public String toString() {
         return "Ledger{" +
                 "date=" + date +
