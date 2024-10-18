@@ -6,9 +6,13 @@ import java.time.LocalTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
+// Java Console program that tracks all transactions and saved to and read from the transaction file named transaction.csv.
+
 public class Main {
+
 
     // Store the Transaction file as a Variable. So do not have to keep typing "transaction.csv" to call the file
     public final static String dataFileName = "transactions.csv";
@@ -97,10 +101,10 @@ public class Main {
         // Prompts the user for deposit details
         String depositDescription = Console.PromptForString("Description of the deposit: ");
         String depositVendor = Console.PromptForString("Enter the name of the Vendor: ");
-        double depositAmount = Console.PromptForDouble("Enter the amount you want to deposit:  ");
+        double depositAmount = Console.PromptForDouble("Enter the amount you want to deposit: ");
 
         // Create a new Ledger entry for the deposit
-        Ledger ledger = new Ledger(transactions.size() + 1, depositDate, depositTime,
+        Ledger ledger = new Ledger(UUID.randomUUID(), depositDate, depositTime,
                  depositDescription, depositVendor, depositAmount);
         transactions.add(ledger); // Adds the deposit to the transaction list
         saveTransaction(); // Save the transaction to the file. saveTransaction is the fileWriter
@@ -140,7 +144,7 @@ public class Main {
         paymentAmount = paymentAmount * -1; //Payments are now recorded in negative amount
 
         // Creates a new Ledger entry for the payment
-        Ledger ledge = new Ledger(transactions.size() +1, paymentDate, paymentTime,
+        Ledger ledge = new Ledger(UUID.randomUUID(), paymentDate, paymentTime,
                 paymentDescription, paymentVendor, paymentAmount);
         transactions.add(ledge); //Add the payment to the transactions list
         saveTransaction(); //Save the transaction to the file. saveTransaction is the fileWriter
@@ -282,6 +286,7 @@ public class Main {
 
     }
 
+    // Method to display reports screen
     static void reports(){
 
         /*
@@ -336,6 +341,7 @@ public class Main {
 
     }
 
+    // Method to display Current month
     static void monthToDate(){
 
         System.out.println("These are Entries from current month: ");
@@ -364,6 +370,7 @@ public class Main {
         Console.PromptForString("Press Enter to exit");
     }
 
+    // Method to display previous month
     static void previousMonth(){
 
         System.out.println("These are Entries from previous month: ");
@@ -391,7 +398,7 @@ public class Main {
         Console.PromptForString("Press Enter to exit");
     }
 
-
+    // Method to display Current year
     static void yearToDate(){
 
         System.out.println("These are Entries from current year: ");
@@ -420,7 +427,7 @@ public class Main {
 
     }
 
-
+    // Method to display previous year
     static void previousYear(){
 
         System.out.println("These are Entries from previous year: ");
@@ -450,6 +457,7 @@ public class Main {
 
     }
 
+    // Method to search by inputting vendor name
     static void searchByVendor(){
 
         String vendor = Console.PromptForString("Enter the vendor you want to search. \n>> ");
@@ -517,7 +525,7 @@ public class Main {
 
             DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-            br.readLine(); //Skips the header line
+            br.readLine(); //Skips line by line
 
             /* Read each line from the file until there are no more lines to read.
             Splits the lines into tokens using the '|' character as the delimiter.
@@ -529,7 +537,7 @@ public class Main {
                 String description = tokens[2];
                 String vendor = tokens[3];
                 double amount = Double.parseDouble(tokens[4]); //
-                Ledger ledger = new Ledger (transaction.size() +1, date, time, description, vendor, amount);
+                Ledger ledger = new Ledger (UUID.randomUUID(), date, time, description, vendor, amount);
                 transaction.add(ledger);
             }
             br.close(); //Closes the BufferedReader
