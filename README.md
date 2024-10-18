@@ -111,7 +111,7 @@ allowed me to keep track of entries, allowing each new entry to get a unique. in
 The problem of doing this way tho, is that, if an item is deleted from the transactions list, it will no
 longer remain sequential and there will be unused ids.
 
-- Latest update replaces the arraylist.size() + 1 to get an automatic ID with UUID, a much better way to get a random ID.
+- Latest update replaces the arraylist.size() + 1 to get an automatic ID with UUID, a much better way to get a unique ID.
 - Thank you to all the feedback on my presentation for this update.  
 
 
